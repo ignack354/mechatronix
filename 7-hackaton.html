@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECH FEST 2026 — Autonomous Mechatronics Grand Prix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#12092F;
+    --navy-800:#170B4D;
+    --violet:#7C3AED;
+    --violet-2:#9F5BFF;
+    --white:#FFFFFF;
+    --paper:#FFFFFF;
+    --paper-alt:#F5F3FC;
+    --ink:#170B4D;
+    --muted:#645C86;
+    --muted-onDark:#C9C3E8;
+    --line:#E3DEF5;
+    --line-onDark:rgba(255,255,255,.16);
+    --font-impact:'Anton',sans-serif;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-.01em;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-2);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  .eyebrow::before{content:"";width:20px;height:2px;background:var(--violet-2);display:inline-block;}
+
+  .page-head{
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    min-height:350px;
+    display:flex;
+    padding:40px 0;
+    background:#12092F;
+    border-bottom:1px solid var(--line);
+    color:#fff;
+  }
+  .page-head::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    width:70vw;
+    height:100%;
+    margin:auto;
+    background-image:url("CRISIS.png");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:100% 100%;
+    z-index:1;
+  }
+  .page-head::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:260px;
+    height:16px;
+    background:repeating-linear-gradient(115deg, var(--violet) 0 16px, transparent 16px 24px);
+    clip-path:polygon(0 0,100% 0,80% 100%,0 100%);
+    z-index:2;
+  }
+  .page-head .container{
+    width:80%;
+    position:relative;
+    z-index:3;
+  }
+  .page-head h1{
+    font-family:var(--font-impact);
+    font-weight:400;
+    font-size:clamp(30px,5.4vw,56px);
+    margin-bottom:16px;
+  }
+  .page-head p.desc{color:var(--muted-onDark);max-width:560px;font-size:16px;}
+  .back-btn{
+    margin-top:25px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--font-mono);
+    font-size:15px;
+    letter-spacing:.03em;
+    color:var(--muted-onDark);
+    margin-bottom:22px;
+  }
+  .back-btn:hover{color:#fff;}
+
+  .event-logo{width:220px;height:84px;border:1px dashed var(--line-onDark);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;color:var(--muted-onDark);margin-bottom:26px;}
+  .event-logo img{height:84px;width:auto;display:block;}
+
+  section.body-sec{padding:60px 0 90px;}
+  .meta-row{display:flex;gap:40px;flex-wrap:wrap;margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--line);}
+  .meta-row div{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+  .meta-row strong{display:block;color:var(--ink);font-size:16px;font-weight:600;margin-top:5px;font-family:var(--font-body);}
+
+  .long-desc{max-width:680px;font-size:15.5px;color:var(--muted);margin-bottom:40px;}
+
+  .subcats{margin-bottom:44px;}
+  .subcats h4{font-size:15px;color:var(--ink);margin-bottom:14px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;}
+
+  .cat-table-wrap{overflow-x:auto;border:1px solid var(--line);}
+  .cat-table{width:100%;border-collapse:collapse;min-width:640px;}
+  .cat-table th{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--ink);
+    text-align:left;
+    padding:14px 18px;
+  }
+  .cat-table td{
+    padding:16px 18px;
+    font-size:14px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+    vertical-align:top;
+  }
+  .cat-table tr:nth-child(even) td{background:var(--paper-alt);}
+  .cat-table td.cat-name{color:var(--ink);font-weight:600;font-family:var(--font-display);font-size:15px;white-space:nowrap;}
+  .cat-table td.cat-team{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--violet);
+    white-space:nowrap;
+  }
+
+  .actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;padding:15px 28px;border:1px solid var(--violet);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
+  .btn-primary{background:var(--violet);color:#fff;font-weight:700;}
+  .btn-primary:hover{background:var(--violet-2);border-color:var(--violet-2);}
+  .btn-ghost{color:var(--ink);border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--violet);color:var(--violet);}
+
+  footer{padding:26px 0;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted-onDark);background:var(--navy-900);border-top:1px solid var(--line-onDark);}
+
+  @media (max-width:700px){
+    .page-head{min-height:250px;padding:30px 0;background-size:contain;}
+    .page-head::before{width:150px;}
+    section.body-sec{padding:40px 0 60px;}
+    .meta-row{gap:25px;}
+    .actions{flex-direction:column;}
+    .btn{justify-content:center;width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<section class="page-head">
+  <div class="container">
+    <a href="javascript:history.back()" class="back-btn">← Regresar</a>
+  </div>
+</section>
+
+<section class="body-sec">
+  <div class="container">
+    <div class="meta-row">
+      <div>Fecha<strong>04 diciembre 2026</strong></div>
+      <div>Hora<strong>18:00 pm</strong></div>
+      <div>Sede<strong>Tec Campus Hidalgo</strong></div>
+      <div>Equipos<strong>2 a 4 integrantes</strong></div>
+    </div>
+
+    <p class="long-desc">
+     El reto se revela cuando comienza el Hackatón. Y desde ese momento, el reloj corre.  
+Tendrás junto con tu equipo 24 horas para analizar una emergencia climática, tomar decisiones, desarrollar una propuesta y convertir una idea en una solución viable. Aquí no se trata solo de programar: tendrás que combinar estrategia, logística, tecnología, creatividad y trabajo en equipo.  
+Prueba. Falla. Ajusta. Construye. Defiende tu solución ante el jurado.  
+No buscamos la idea perfecta. Buscamos equipos capaces de pensar diferente cuando el tiempo y las condiciones importan.  
+Forma tu equipo, consulta las bases y entra a Climate Response 24h – Crisis Lab.
+    </p>
+
+    <div class="actions">
+      
+      <a href="convocatorias/hackaton.docx" class="btn btn-ghost">Convocatoria</a>
+      <a href="https://forms.gle/zvgj9ykaFapc5WmbA" target="_blank" rel="noopener" class="btn btn-primary">Registrarse →</a>
+    </div>
+  </div>
+</section>
+
+<footer>TECH FEST 2026 — Tecnológico de Monterrey · Escuela de Ingeniería y Ciencias · PrepaTec</footer>
+
+</body>
+</html>
