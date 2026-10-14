@@ -37,8 +37,10 @@
     position:relative;
     overflow:hidden;
     width:100%;
-    min-height:350px;
+    aspect-ratio: 1920 / 640;
+    min-height:220px;
     display:flex;
+    align-items:flex-end;
     padding:40px 0;
     background:#12092F;
     border-bottom:1px solid var(--line);
@@ -48,13 +50,13 @@
     content:"";
     position:absolute;
     inset:0;
-    width:80vw;
+    width:100%;
     height:100%;
-    margin:auto;
-    background-image:url("mechatronix.png");
+    background-image:url("Mechatronix1920640.png");
     background-repeat:no-repeat;
-    background-position:center;
-    background-size:100% 100%;
+    background-position:center center;
+    background-size:contain;
+    background-color:#12092F;
     z-index:1;
   }
   .page-head::before{
@@ -72,6 +74,8 @@
     width:80%;
     position:relative;
     z-index:3;
+    display:flex;
+    align-items:flex-start;
   }
   .page-head h1{
     font-family:var(--font-impact);
@@ -81,15 +85,17 @@
   }
   .page-head p.desc{color:var(--muted-onDark);max-width:560px;font-size:16px;}
   .back-btn{
-    margin-top:25px;
+    position:absolute;
+    top:clamp(24px, 7vw, 100px);
+    left:clamp(14px, 2vw, 24px);
     display:inline-flex;
     align-items:center;
     gap:6px;
     font-family:var(--font-mono);
-    font-size:15px;
+    font-size:clamp(12px, 1.1vw, 15px);
     letter-spacing:.03em;
     color:var(--muted-onDark);
-    margin-bottom:22px;
+    z-index:4;
   }
   .back-btn:hover{color:#fff;}
 
@@ -144,7 +150,7 @@
   footer{padding:26px 0;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted-onDark);background:var(--navy-900);border-top:1px solid var(--line-onDark);}
 
   @media (max-width:700px){
-    .page-head{min-height:250px;padding:30px 0;background-size:contain;}
+    .page-head{min-height:160px;padding:20px 0;}
     .page-head::before{width:150px;}
     section.body-sec{padding:40px 0 60px;}
     .meta-row{gap:25px;}
@@ -156,9 +162,7 @@
 <body>
 
 <section class="page-head">
-  <div class="container">
-    <a href="javascript:history.back()" class="back-btn">← Regresar</a>
-  </div>
+  <a href="default.php" class="back-btn">← Regresar</a>
 </section>
 
 <section class="body-sec">
@@ -228,7 +232,7 @@
     </div>
 
     <div class="actions">
-      <a href="convocatoria.html" class="btn btn-ghost">Reglamento de cada categoría</a>
+      <a href="convocatoria.php" class="btn btn-ghost">Reglamento de cada categoría</a>
       <a href="convocatorias/grand_prix.docx" class="btn btn-ghost">Convocatoria del evento</a>
       <a href="https://forms.gle/zvgj9ykaFapc5WmbA" target="_blank" rel="noopener" class="btn btn-primary">Registrarse →</a>
     </div>
