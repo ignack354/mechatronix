@@ -37,24 +37,27 @@
     position:relative;
     overflow:hidden;
     width:100%;
-    min-height:350px;
+    aspect-ratio: 1920 / 640;
+    min-height:220px;
     display:flex;
+    align-items:flex-end;
     padding:40px 0;
     background:#12092F;
     border-bottom:1px solid var(--line);
     color:#fff;
   }
   .page-head::after{
+
     content:"";
     position:absolute;
     inset:0;
-    width:100vw;
+    width:100%;
     height:100%;
     margin:auto;
     background-image:url("expoingenierias.png");
     background-repeat:no-repeat;
-    background-position:center;
-    background-size:100% 100%;
+    background-position:center center;
+    background-size:contain;
     z-index:1;
   }
   .page-head::before{
@@ -81,15 +84,17 @@
   }
   .page-head p.desc{color:var(--muted-onDark);max-width:560px;font-size:16px;}
   .back-btn{
-    margin-top:25px;
+    position:absolute;
+    top:clamp(24px, 7vw, 100px);
+    left:clamp(14px, 2vw, 24px);
     display:inline-flex;
     align-items:center;
     gap:6px;
     font-family:var(--font-mono);
-    font-size:15px;
+    font-size:clamp(12px, 1.1vw, 15px);
     letter-spacing:.03em;
     color:var(--muted-onDark);
-    margin-bottom:22px;
+    z-index:4;
   }
   .back-btn:hover{color:#fff;}
 
@@ -156,9 +161,8 @@
 <body>
 
 <section class="page-head">
-  <div class="container">
-    <a href="javascript:history.back()" class="back-btn">← Regresar</a>
-  </div>
+    <a href="default.php" class="back-btn">← Regresar</a>
+  
 </section>
 
 <section class="body-sec">
